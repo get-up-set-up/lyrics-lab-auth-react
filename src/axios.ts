@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const detectBaseUrl = (): string => {
-  return 'http://localhost:5214/api'
+  return  process.env.BASE_URL_API || 'http://localhost:5214/api'
 }
 
 export const axiosInstance = axios.create({
@@ -21,6 +21,12 @@ export async function login(email: string, password: string) {
   } catch (error: any) {
     throw new Error(error || 'Erro na requisição.')
   }
+}
+
+
+export async function verifySession() {
+  await axiosInstance.get('/auth/verify-session')
+  return true
 }
 
 export async function register(name: string, email: string, password: string) {
