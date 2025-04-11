@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const detectBaseUrl = (): string => {
-  return  process.env.BASE_URL_API || 'http://localhost:5214/api'
+  return  'https://lyrics-lab-api.onrender.com/api'
 }
 
 export const axiosInstance = axios.create({
